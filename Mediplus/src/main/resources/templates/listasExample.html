@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD SPRING BOOT</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+	<a class="btn button btn-primary" th:href="@{/singUp}">Agregar Nuevo</a>
+		<table border="1">
+			<thead style="background-color: #5BA5EA">
+				<tr>
+					<th>#</th>
+					<th>USERNAME</th>
+					<th>PASSWORD</th>					
+					<th>FULLNAME</th>
+					<th>DIRECCION</th>
+					<th>BIRTHDAY</th>
+					<th>COUNTRY</th>
+					<th>CITY</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p:${users}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.username}"></td>
+					<td th:text="${p.password}"></td>
+					<td th:text="${p.fullname}"></td>
+					<td th:text="${p.birthday}"></td>
+					<td th:text="${p.country}"></td>
+					<td th:text="${p.city}"></td>
+					<td>
+					<a th:onclick="eliminar([[${p.id}]])" href="#">delete</a>
+					<a th:href="@{/listar/}+${p.id}">editar</a>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="/funciones.js"></script>
+</body>
+</html>
